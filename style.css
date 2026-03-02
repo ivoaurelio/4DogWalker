@@ -833,6 +833,130 @@ img {
 }
 
 /* ==========================================================================
+   Packages Section
+   ========================================================================== */
+.packages {
+    padding: var(--section-padding);
+    background-color: #e5f0f9; /* Light blue background */
+    position: relative;
+}
+
+.packages-container {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.packages-container .section-header {
+    margin: 0 auto 4rem auto;
+    background-color: #fff6d6; /* Light yellow bubble */
+    padding: 1.5rem 3rem;
+    border-radius: 40px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.packages-container .section-header h2 {
+    color: #2b557b; /* Dark blue text */
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.table-container {
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #dcf2c6; /* Inner table wrapper green */
+    border-radius: 24px;
+    padding: 1rem;
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
+
+/* Dog decoration for table if needed */
+.table-container::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background-image: url('corgi1.png'); /* Fallback illustration */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    z-index: -1;
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white; /* Base color to ensure colors match */
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    border: none;
+    font-size: 1.1rem;
+    color: #2b557b;
+}
+
+.pricing-table th {
+    background-color: #f77f21; /* Vibrant orange */
+    color: white;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+}
+
+/* Ensure border radius is applied properly */
+.pricing-table thead tr th:first-child { border-top-left-radius: 12px; }
+.pricing-table thead tr th:last-child { border-top-right-radius: 12px; }
+.pricing-table tbody tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+.pricing-table tbody tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+
+.pricing-table .row-green td {
+    background-color: #eef7e6; /* Extra light green */
+}
+
+.pricing-table .row-yellow td {
+    background-color: #fdf6d2; /* Extra light yellow */
+}
+
+.pricing-table td strong {
+    font-weight: 700;
+    color: #2b557b;
+}
+
+@media (max-width: 768px) {
+    .pricing-table th, .pricing-table td {
+        font-size: 0.9rem;
+        padding: 0.8rem 0.5rem;
+    }
+    .packages-container .section-header h2 {
+        font-size: 1.5rem;
+    }
+    .packages-container .section-header {
+        padding: 1rem 1.5rem;
+        border-radius: 25px;
+        margin-bottom: 3rem;
+    }
+    .table-container::before {
+        top: -90px;
+        right: -10px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* ==========================================================================
    Animations (Triggered by JS)
    ========================================================================== */
 .fade-up {
