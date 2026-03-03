@@ -1225,7 +1225,9 @@ img {
         padding: 1.5rem 1.25rem;
         width: 100%;
         max-width: 350px;
-        margin: 0 auto;
+        margin: auto;
+        left: 0;
+        right: 0;
         box-sizing: border-box;
     }
 
