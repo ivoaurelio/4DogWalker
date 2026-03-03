@@ -1082,11 +1082,13 @@ img {
     border-radius: var(--radius-lg);
     max-width: 500px;
     width: 90%;
+    margin: 0 auto;
     position: relative;
     transform: translateY(20px) scale(0.95);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .modal-overlay.active .modal-content {
@@ -1216,10 +1218,10 @@ img {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     .modal-content {
-        padding: 2rem 1rem;
-        width: 90%;
+        padding: 2rem 1.5rem;
+        width: 95%;
         margin: 0 auto;
         box-sizing: border-box;
     }
