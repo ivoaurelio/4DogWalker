@@ -1219,8 +1219,9 @@ img {
 @media (max-width: 480px) {
     .modal-content {
         padding: 2rem 1rem;
-        width: 95%;
-        margin: 0 10px;
+        width: 90%;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
     .modal-title {
