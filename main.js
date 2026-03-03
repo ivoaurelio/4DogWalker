@@ -103,16 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             const tutorName = document.getElementById('tutorName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const petName = document.getElementById('petName').value.trim();
             const scheduleDay = document.getElementById('scheduleDay').value;
             const scheduleTime = document.getElementById('scheduleTime').value;
 
-            if (!tutorName || !petName || !scheduleDay || !scheduleTime) {
+            if (!tutorName || !phone || !petName || !scheduleDay || !scheduleTime) {
                 alert("Por favor, preencha todos os campos do formulário para agendar a visita.");
                 return;
             }
 
-            const message = `Vim do Site\nOlá! 🐶\n\nMeu nome é *${tutorName}* e eu gostaria de agendar uma visita técnica para o meu pet, o(a) *${petName}*.\n\nO melhor horário para nós seria na *${scheduleDay}* no turno da *${scheduleTime}*.\n\nAguardo confirmação!`;
+            const message = `Vim do Site\nOlá! 🐶\n\nMeu nome é *${tutorName}* (☎️ ${phone}) e eu gostaria de agendar uma visita técnica para o meu pet, o(a) *${petName}*.\n\nO melhor horário para nós seria na *${scheduleDay}* no turno da *${scheduleTime}*.\n\nAguardo confirmação!`;
 
             const whatsappUrl = `https://wa.me/5551989353003?text=${encodeURIComponent(message)}`;
 

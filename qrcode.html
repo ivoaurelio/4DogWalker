@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectar WhatsApp da 4DogWalker</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #FFB800;
+            /* 4DogFun Primary Color */
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        #qrcode-container {
+            margin: 1.5rem 0;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #qrcode {
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        button {
+            background-color: #2B2D42;
+            /* Secondary color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #1a1c29;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #FFB800;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #status-message {
+            margin-top: 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Conexão do WhatsApp</h1>
+        <p>Clique no botão abaixo para gerar o QR Code. Depois, abra o WhatsApp no seu celular, vá em <strong>Aparelhos
+                Conectados > Conectar um aparelho</strong> e aponte a câmera para a tela.</p>
+
+        <div id="qrcode-container">
+            <!-- QR Code will appear here -->
+            <span style="color: #888;">Nenhum código gerado ainda.</span>
+        </div>
+
+        <button id="generate-btn">1. Criar Instância e Gerar QR Code</button>
+        <div id="status-message"></div>
+    </div>
+
+    <script>
+        const generateBtn = document.getElementById('generate-btn');
+        const qrcodeContainer = document.getElementById('qrcode-container');
+        const statusMessage = document.getElementById('status-message');
+
+        generateBtn.addEventListener('click', async () => {
+            // UI Reset
+            statusMessage.textContent = 'Trabalhando nisso, aguarde...';
+            statusMessage.className = '';
+            qrcodeContainer.innerHTML = '<div class="loader"></div>';
+            generateBtn.disabled = true;
+
+            try {
+                // Step 1: Request backend to handle the instance logic and give us the base64 QR Code
+                const response = await fetch('/api/qrcode', {
+                    method: 'GET'
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.qrcode) {
+                    // Determine if it was just connected or needs scanning
+                    if (data.status === 'open') {
+                        qrcodeContainer.innerHTML = `<h3 style="color: #28a745;">✅ O WhatsApp já está conectado!</h3><p>Instância: ${data.instanceName}</p>`;
+                        statusMessage.textContent = 'Não precisa escanear novamente.';
+                        generateBtn.style.display = 'none';
+                        generateBtn.disabled = false;
+                        return;
+                    }
+
+                    // Render the QR code image
+                    qrcodeContainer.innerHTML = `<img id="qrcode" src="${data.qrcode}" alt="WhatsApp QR Code">`;
+                    statusMessage.textContent = 'Aguardando leitura... Escaneie agora o QR Code com o telemóvel!';
+                    statusMessage.className = 'success';
+                    generateBtn.textContent = 'Gerar Novo QR Code (Se Expelir)';
+                } else {
+                    throw new Error(data.error || 'Não foi possível buscar o QR Code.');
+                }
+            } catch (error) {
+                console.error('Error fetching QR code:', error);
+                qrcodeContainer.innerHTML = '<span style="color: #dc3545;">Falha ao carregar a imagem.</span>';
+                statusMessage.textContent = `Erro: ${error.message}`;
+                statusMessage.className = 'error';
+            } finally {
+                generateBtn.disabled = false;
+            }
+        });
+
+        // Auto check if it's connected when the page loads
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/api/qrcode?checkOnly=true');
+                const data = await response.json();
+                if (response.ok && data.status === 'open') {
+                    qrcodeContainer.innerHTML = `<h3 style="color: #28a745;">✅ O WhatsApp já está conectado!</h3><p>Instância Ativa.</p>`;
+                    statusMessage.textContent = 'Pode fechar esta página e testar o website.';
+                    statusMessage.className = 'success';
+                    generateBtn.style.display = 'none';
+                }
+            } catch (e) {
+                // Silently fail checking
+            }
+        });
+    </script>
+
+</body>
+
+</html>

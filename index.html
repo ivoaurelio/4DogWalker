@@ -76,9 +76,8 @@
             </div>
 
             <div class="nav-actions">
-                <a href="https://wa.me/5551989353003" target="_blank" class="btn btn-primary">
-                    <img src="whatsapp-icon.png" alt="WhatsApp" class="wpp-icon">
-                    Agendar Passeio
+                <a href="#contact" class="btn btn-primary">
+                    Começar Agora
                 </a>
                 <button class="mobile-menu-toggle" aria-label="Abrir menu">
                     <i data-lucide="menu"></i>
@@ -118,9 +117,8 @@
                     </a>
                 </div>
 
-                <a href="https://wa.me/5551989353003" target="_blank" class="btn btn-primary mobile-btn">
-                    <img src="whatsapp-icon.png" alt="WhatsApp" class="wpp-icon">
-                    Agendar Passeio
+                <a href="#contact" class="btn btn-primary mobile-btn">
+                    Começar Agora
                 </a>
             </nav>
         </div>
@@ -165,25 +163,40 @@
             <div class="services-grid">
                 <div class="service-card fade-up" style="--delay: 0.1s">
                     <div class="service-image-wrapper">
+                        <img src="corgi1.png" alt="Passeio Diário" class="service-illustration ill-2">
+                    </div>
+                    <h3>Passeio Diário (5x por semana)</h3>
+                    <p>Para cães de alta energia. Um passeio de 45 minutos na região da sua casa.</p>
+                    <button class="btn btn-outline" onclick="openModal('modal-diario')"
+                        style="margin-top: auto; width: 100%; border-width: 2px;">Ver Valores</button>
+                </div>
+                <div class="service-card fade-up" style="--delay: 0.2s">
+                    <div class="service-image-wrapper">
                         <img src="Corgi.png" alt="Passeio 3x por semana" class="service-illustration ill-1">
                     </div>
                     <h3>Passeio Matinal 3x por semana</h3>
                     <p>Ideal para começar o dia com energia. Um passeio de 45 minutos na região da sua casa.</p>
-                </div>
-                <div class="service-card fade-up" style="--delay: 0.2s">
-                    <div class="service-image-wrapper">
-                        <img src="corgi1.png" alt="Passeio diário" class="service-illustration ill-2">
-                    </div>
-                    <h3>Passeio Matinal diário</h3>
-                    <p>Para cães de alta energia. 45 minutos na região da sua casa.</p>
+                    <button class="btn btn-outline" onclick="openModal('modal-3x')"
+                        style="margin-top: auto; width: 100%; border-width: 2px;">Ver Valores</button>
                 </div>
                 <div class="service-card fade-up" style="--delay: 0.3s">
                     <div class="service-image-wrapper">
-                        <img src="corgi2.png" alt="Passeio semanal" class="service-illustration ill-3">
+                        <img src="Corgi.png" alt="Passeio 2x por semana" class="service-illustration ill-4">
                     </div>
-                    <h3>Passeio Matinal semanal</h3>
-                    <p>Para cães tranquilos que necessitam de uma atividade extra.Um passeio tranquilo de 45 minutos na
+                    <h3>Passeio Matinal 2x por semana</h3>
+                    <p>Ideal para começar o dia com energia. Um passeio de 45 minutos na região da sua casa.</p>
+                    <button class="btn btn-outline" onclick="openModal('modal-2x')"
+                        style="margin-top: auto; width: 100%; border-width: 2px;">Ver Valores</button>
+                </div>
+                <div class="service-card fade-up" style="--delay: 0.4s">
+                    <div class="service-image-wrapper">
+                        <img src="corgi2.png" alt="Passeio Avulso" class="service-illustration ill-3">
+                    </div>
+                    <h3>Passeio Avulso</h3>
+                    <p>Para cães tranquilos que necessitam de uma atividade extra. Um passeio tranquilo de 45 minutos na
                         região da sua casa.</p>
+                    <button class="btn btn-outline" onclick="openModal('modal-avulso')"
+                        style="margin-top: auto; width: 100%; border-width: 2px;">Ver Valores</button>
                 </div>
             </div>
         </div>
@@ -231,9 +244,14 @@
     <section id="packages" class="packages"
         style="padding: 2rem 1rem; background-color: var(--bg-light); text-align: center;">
         <div class="container packages-container">
-            <div class="packages-content fade-up" style="display: flex; justify-content: center;">
+            <div class="packages-content fade-up"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;">
                 <img src="img-pacotes.png" alt="Nossos Pacotes"
                     style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: var(--shadow-lg);">
+                <a href="#contact" class="btn btn-primary btn-large">
+                    <img src="whatsapp-icon.png" alt="WhatsApp" class="wpp-icon">
+                    Agendar Visita Técnica
+                </a>
             </div>
         </div>
     </section>
@@ -247,6 +265,9 @@
                 <form id="scheduling-form" class="scheduling-form">
                     <div class="form-group">
                         <input type="text" id="tutorName" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Seu WhatsApp (Ex: 51999999999)" required>
                     </div>
                     <div class="form-group">
                         <input type="text" id="petName" placeholder="Nome do Pet" required>
@@ -298,7 +319,8 @@
             <div class="footer-links">
                 <h4>Contato</h4>
                 <a href="mailto:amigo.do.cao@4dogfun.com.br" class="footer-contact">amigo.do.cao@4dogfun.com.br</a>
-                <a href="https://wa.me/5551989353003" target="_blank" class="footer-contact">
+                <a href="https://wa.me/5551989353003?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%204DogFun%20e%20gostaria%20de%20saber%20mais."
+                    target="_blank" class="footer-contact">
                     <img src="whatsapp-icon.png" alt="WhatsApp" class="wpp-icon footer-wpp">
                     (51) 98935-3003
                 </a>
@@ -341,11 +363,93 @@
         </div>
     </footer>
 
+    <!-- Modals -->
+    <!-- Modal Diario -->
+    <div id="modal-diario" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-diario')"><i data-lucide="x"></i></button>
+            <h3 class="modal-title">Pacote Mensal 20 Passeios</h3>
+            <div class="modal-price">R$ 990,00</div>
+            <div class="modal-freq">Diário de 2ª a 6ª-feira</div>
+            <div class="modal-actions">
+                <a href="#contact" class="btn btn-primary" onclick="closeModal('modal-diario')">Agendar Visita
+                    Técnica</a>
+                <a href="https://wa.me/5551989353003?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Mensal%20de%2020%20Passeios."
+                    target="_blank" class="btn btn-outline">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3x -->
+    <div id="modal-3x" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-3x')"><i data-lucide="x"></i></button>
+            <h3 class="modal-title">Pacote Mensal 12 Passeios</h3>
+            <div class="modal-price">R$ 650,00</div>
+            <div class="modal-freq">2ª, 4ª e 6ª-feiras</div>
+            <div class="modal-actions">
+                <a href="#contact" class="btn btn-primary" onclick="closeModal('modal-3x')">Agendar Visita Técnica</a>
+                <a href="https://wa.me/5551989353003?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Mensal%20de%2012%20Passeios."
+                    target="_blank" class="btn btn-outline">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2x -->
+    <div id="modal-2x" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-2x')"><i data-lucide="x"></i></button>
+            <h3 class="modal-title">Pacote Mensal 8 Passeios</h3>
+            <div class="modal-price">R$ 470,00</div>
+            <div class="modal-freq">3ª e 5ª-feira</div>
+            <div class="modal-actions">
+                <a href="#contact" class="btn btn-primary" onclick="closeModal('modal-2x')">Agendar Visita Técnica</a>
+                <a href="https://wa.me/5551989353003?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Mensal%20de%208%20Passeios."
+                    target="_blank" class="btn btn-outline">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Avulso -->
+    <div id="modal-avulso" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-avulso')"><i data-lucide="x"></i></button>
+            <h3 class="modal-title">Passeio Unitário</h3>
+            <div class="modal-price">R$ 85,00</div>
+            <div class="modal-freq">Frequência a combinar</div>
+            <div class="modal-actions">
+                <a href="#contact" class="btn btn-primary" onclick="closeModal('modal-avulso')">Agendar Visita
+                    Técnica</a>
+                <a href="https://wa.me/5551989353003?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Passeio%20Unit%C3%A1rio."
+                    target="_blank" class="btn btn-outline">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom JS -->
     <script src="main.js"></script>
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Modal functions
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     </script>
 </body>
 
