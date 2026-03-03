@@ -1069,6 +1069,8 @@ img {
     pointer-events: none;
     transition: opacity 0.3s ease;
     backdrop-filter: blur(4px);
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .modal-overlay.active {
@@ -1221,9 +1223,9 @@ img {
 @media (max-width: 580px) {
     .modal-content {
         padding: 1.5rem 1.25rem;
-        width: 88vw;
-        max-width: 100%;
-        margin: auto;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
