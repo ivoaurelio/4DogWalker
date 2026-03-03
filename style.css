@@ -188,6 +188,36 @@ img {
     color: var(--bg-white);
 }
 
+.btn-text {
+    background-color: transparent;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color var(--transition);
+}
+
+.btn-text::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 5px;
+    left: 50%;
+    background-color: var(--primary);
+    transition: all var(--transition);
+    transform: translateX(-50%);
+}
+
+.btn-text:hover {
+    color: var(--primary-dark);
+}
+
+.btn-text:hover::after {
+    width: 60%;
+    background-color: var(--primary-dark);
+}
+
 .btn-dark {
     background-color: var(--secondary);
     color: var(--bg-white);
@@ -1180,5 +1210,29 @@ img {
     .footer-container {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-title {
+        font-size: 1.25rem;
+    }
+
+    .modal-price {
+        font-size: 2.25rem;
+    }
+
+    .modal-freq {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-actions .btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
